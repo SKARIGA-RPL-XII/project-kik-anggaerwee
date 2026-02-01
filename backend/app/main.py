@@ -1,22 +1,22 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers.api import router
+from app.routers import auth, user
 
 app = FastAPI(
     title="OCR Translate API",
     version="1.0.0"
 )
 
-# CORS (agar bisa diakses React)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ganti domain saat production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(router)
+app.include_router(auth.router, tags=["Authentikasi"])
+app.include_router(user.router, tags=["Profil"])
 
 @app.get("/")
 def root():
