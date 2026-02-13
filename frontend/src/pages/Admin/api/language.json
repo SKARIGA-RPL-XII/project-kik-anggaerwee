@@ -1,0 +1,22 @@
+[
+  { "id": 1,  "languagenm": "Indonesia",     "isactive": true },
+  { "id": 2,  "languagenm": "Inggris",       "isactive": false },
+  { "id": 3,  "languagenm": "Jepang",        "isactive": true },
+  { "id": 4,  "languagenm": "Korea",         "isactive": false },
+  { "id": 5,  "languagenm": "Mandarin",      "isactive": true },
+  { "id": 6,  "languagenm": "Spanyol",       "isactive": true },
+  { "id": 7,  "languagenm": "Prancis",       "isactive": false },
+  { "id": 8,  "languagenm": "Jerman",        "isactive": true },
+  { "id": 9,  "languagenm": "Arab",          "isactive": false },
+  { "id": 10, "languagenm": "Italia",        "isactive": true },
+  { "id": 11, "languagenm": "Rusia",         "isactive": false },
+  { "id": 12, "languagenm": "Belanda",       "isactive": true },
+  { "id": 13, "languagenm": "Thailand",      "isactive": false },
+  { "id": 14, "languagenm": "Vietnam",       "isactive": true },
+  { "id": 15, "languagenm": "Swedia",        "isactive": false },
+  { "id": 16, "languagenm": "Portugal",      "isactive": true },
+  { "id": 17, "languagenm": "Turki",         "isactive": false },
+  { "id": 18, "languagenm": "Hindi",         "isactive": true },
+  { "id": 19, "languagenm": "Yunani",        "isactive": false },
+  { "id": 20, "languagenm": "Filipina",      "isactive": true }
+]

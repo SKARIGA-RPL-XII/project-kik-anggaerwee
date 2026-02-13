@@ -1,6 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import Swal from "sweetalert2";
+import 'sweetalert2/themes/bootstrap-5.css'
 
 const Toast = Swal.mixin({
   toast: true,
@@ -73,6 +74,19 @@ export const getRole = (token) => {
 };
 
 export const Logout = () => {
-  localStorage.removeItem("token");
-  window.location.replace("/");
+  Swal.fire({
+    title: "Are you sure?",
+    text: "Users who log out must log back in",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, logout!",
+    theme: 'bootstrap-5-light'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("token");
+      window.location.replace("/");
+    }
+  });
 };

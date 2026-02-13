@@ -20,9 +20,7 @@ const ProfileAdmin = () => {
 
   return (
     <SidebarLayouts type="profile">
-  <div className="p-4">
     <Breadcrumb type="Profile" subtype={subtype} />
-  </div>
 
   
 

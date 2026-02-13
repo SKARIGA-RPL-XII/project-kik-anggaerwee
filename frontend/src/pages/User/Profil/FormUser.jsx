@@ -10,7 +10,7 @@ const FormUser = () => {
   const [usernm, setUsernm] = useState(null);
   useEffect(() => {
     const fetchUser = async () => {
-      const data = await GetUser();
+      const data = await GetUser(); 
       console.log(" hasil fetch", data);
       setEmail(data.data.email);
       setUsernm(data.data.usernm);

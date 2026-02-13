@@ -3,8 +3,21 @@ import Logo from '../../assets/trinslitin-logo.png'
 import { Logout } from '../services/auth.services'
 import { Link } from 'react-router-dom';
 import { useLogin } from '../hooks/useLogin';
-const NavbarLayouts = () => {
+import Loading from '../../pages/Loading'
+
+const NavbarLayouts = (props) => {
+    const {type }= props
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+  const navigationType = performance.getEntriesByType("navigation")[0]?.type;
+
+  if (navigationType === "reload") {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
+  }
+}, []);
+
     useLogin()
     return (
       <nav className="bg-blue-50 shadow-md px-6 py-4">
@@ -18,25 +31,31 @@ const NavbarLayouts = () => {
         </div>
 
         <div className="hidden md:flex gap-6 items-center font-semibold text-slate-800">
-          <a href="/user/dashboard" className="hover:text-blue-600">
+          <Link to="/user/dashboard" className={`hover:text-blue-600  ${type == 'translate'
+                    ? " text-blue-600 font-semibold"
+                    : "text-slate-800"} `}>
             Translate
-          </a>
-          <a href="/history" className="hover:text-blue-600">
+          </Link>
+          <a href="/user/history" className={`hover:text-blue-600  ${type == 'history'
+                    ? " text-blue-600 font-semibold"
+                    : "text-slate-800"} `}>
             History
           </a>
-          <a href="/user/profile" className="hover:text-blue-600">
+          <Link to="/user/profile" className={`hover:text-blue-600  ${type == 'profile'
+                    ? " text-blue-600 font-semibold"
+                    : "text-slate-800"} `}>
             Profile
-          </a>
+          </Link>
           <button
             onClick={() => Logout()}
-            className="py-1 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            className="py-1 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer"
           >
             Logout
           </button>
         </div>
 
         <button
-          className="md:hidden text-2xl text-blue-500"
+          className="md:hidden text-2xl text-blue-500 cursor-pointer"
           onClick={() => setOpen(!open)}
         >
           <i className="fa-solid fa-bars"></i>
@@ -45,15 +64,15 @@ const NavbarLayouts = () => {
 
       {open && (
         <div className="md:hidden mt-4 flex flex-col gap-4 font-semibold text-slate-800">
-          <a href="/user/dashboard" className="hover:text-blue-600">
+          <Link to="/user/dashboard" className="hover:text-blue-600">
             Translate
-          </a>
-          <a href="/history" className="hover:text-blue-600">
+          </Link>
+          <Link to="/user/history" className="hover:text-blue-600">
             History
-          </a>
-          <a href="/user/profile" className="hover:text-blue-600">
+          </Link>
+          <Link to="/user/profile" className="hover:text-blue-600">
             Profile
-          </a>
+          </Link>
           <button
             onClick={() => Logout()}
             className="py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"

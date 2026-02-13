@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const Toast = Swal.mixin({
+export const Toast = Swal.mixin({
   toast: true,
   position: "top-end",
   showConfirmButton: false,
@@ -12,12 +12,3 @@ const Toast = Swal.mixin({
   },
 });
 
-const showAlert = ({title, description}) => {
-    return (
-        <div className="flex justify-center items-center w-full">
-            <Alert title={title} description={description} type="success" />
-        </div>
-    )
-}
-
-export default showAlert;

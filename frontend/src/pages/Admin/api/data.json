@@ -1,0 +1,22 @@
+[
+  { "id": 1, "username": "angga01", "email": "angga01@mail.com", "password": "password123", "role": "admin" },
+  { "id": 2, "username": "budi02", "email": "budi02@mail.com", "password": "password123", "role": "user" },
+  { "id": 3, "username": "citra03", "email": "citra03@mail.com", "password": "password123", "role": "user" },
+  { "id": 4, "username": "doni04", "email": "doni04@mail.com", "password": "password123", "role": "user" },
+  { "id": 5, "username": "eka05", "email": "eka05@mail.com", "password": "password123", "role": "admin" },
+  { "id": 6, "username": "fajar06", "email": "fajar06@mail.com", "password": "password123", "role": "user" },
+  { "id": 7, "username": "gina07", "email": "gina07@mail.com", "password": "password123", "role": "user" },
+  { "id": 8, "username": "hadi08", "email": "hadi08@mail.com", "password": "password123", "role": "user" },
+  { "id": 9, "username": "indah09", "email": "indah09@mail.com", "password": "password123", "role": "user" },
+  { "id": 10, "username": "joko10", "email": "joko10@mail.com", "password": "password123", "role": "admin" },
+  { "id": 11, "username": "kiki11", "email": "kiki11@mail.com", "password": "password123", "role": "user" },
+  { "id": 12, "username": "lina12", "email": "lina12@mail.com", "password": "password123", "role": "user" },
+  { "id": 13, "username": "maman13", "email": "maman13@mail.com", "password": "password123", "role": "user" },
+  { "id": 14, "username": "nina14", "email": "nina14@mail.com", "password": "password123", "role": "user" },
+  { "id": 15, "username": "oke15", "email": "oke15@mail.com", "password": "password123", "role": "admin" },
+  { "id": 16, "username": "putra16", "email": "putra16@mail.com", "password": "password123", "role": "user" },
+  { "id": 17, "username": "queen17", "email": "queen17@mail.com", "password": "password123", "role": "user" },
+  { "id": 18, "username": "randi18", "email": "randi18@mail.com", "password": "password123", "role": "user" },
+  { "id": 19, "username": "sari19", "email": "sari19@mail.com", "password": "password123", "role": "user" },
+  { "id": 20, "username": "tono20", "email": "tono20@mail.com", "password": "password123", "role": "admin" }
+]

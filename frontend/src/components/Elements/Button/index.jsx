@@ -4,7 +4,7 @@ const Button = (props) => {
     const {children, onClick = () => {}, type = "button"} = props;
     return (
         <button 
-            className="w-full bg-blue-500 hover:bg-blue-600 py-2 mt-5 text-white rounded-md cursor-pointer"
+            className="w-full bg-linear-to-r from-cyan-500 to-blue-500 hover:bg-blue-600 py-2 mt-5 text-white rounded-md cursor-pointer"
             type={type}
             onClick={() => onClick()}
         >

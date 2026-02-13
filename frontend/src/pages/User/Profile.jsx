@@ -18,7 +18,7 @@ const Profile = () => {
 
   return (
     <div>
-  <NavbarLayouts />
+  <NavbarLayouts type="profile" />
 
   <div className="grid grid-cols-1 md:grid-cols-12 gap-6 p-4 md:p-10">
     

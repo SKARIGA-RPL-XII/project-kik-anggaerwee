@@ -9,9 +9,10 @@ const AuthLayout = (props) => {
       <div className="flex min-h-screen justify-center items-center">
         <div className="w-full max-w-sm text-start">
           <h1 className="text-3xl font-medium">{title}</h1>
-          <p className="font-light text-sm text-slate-400 mt-1">
+          <p className="mb-1 font-light text-sm text-slate-400 mt-1">
             Hi, Welcome to Trinslitin!
           </p>
+          <hr className=" text-slate-400" />
 
           {children}
           

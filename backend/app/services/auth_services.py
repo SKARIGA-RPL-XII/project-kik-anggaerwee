@@ -31,7 +31,6 @@ def process_register(
             createdby= username,
             updatedby= username,
         )
-        print(users)
         
         db.add(users)
         db.commit()
