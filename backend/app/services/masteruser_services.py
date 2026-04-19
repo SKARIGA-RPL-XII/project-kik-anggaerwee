@@ -29,8 +29,11 @@ def process_form(db, userid):
     try:
         if not userid:
             return{"status":"Error", "message":"User not found"}
-        
+
         user = db.query(User).filter(User.userid == userid).first()
+
+        if not user:
+            return{"status":"Error", "message":"Unregistered User"}
         data = []
         data.append({
             "userid": user.userid,
@@ -106,7 +109,7 @@ def process_delete(db, userid):
         user = db.query(User).filter(User.userid == userid).first()
 
         if not user:
-            return {"stataus":"Error","message":"userid tidak terdaftar"}
+            return {"stataus":"Error","message":"Unregistered User"}
 
         db.delete(user)
         db.commit()

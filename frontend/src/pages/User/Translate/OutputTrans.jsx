@@ -9,6 +9,7 @@ import { ChevronDown } from "react-feather";
 const InputTrans = (props) => {
   const {outputSelect, setOutputSelect, setInputSelect, languages, inputSelect} = props;
     const handleOutputChange = (selected) => {
+      console.log("value language", languages)
       if (selected.value === inputSelect?.value) {
         // swap
         setInputSelect(outputSelect);
@@ -16,6 +17,13 @@ const InputTrans = (props) => {
     
       setOutputSelect(selected);
     };
+    if (outputSelect === null ) {
+    return <div className="relative w-full">
+        <div className="w-full bg-white border rounded-md px-4 py-2 flex justify-between items-center">
+          <span>No data available in Language</span>
+        </div>
+      </div>;
+  }
   if ( !outputSelect) {
   return <div>Loading...</div>;
 }
@@ -30,12 +38,13 @@ const InputTrans = (props) => {
         <ListboxOptions className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-50">
           {languages.map((lang) => (
             <ListboxOption
-              key={lang.value}
-              value={lang}
-              className="cursor-pointer px-4 py-2 hover:bg-blue-100"
-            >
-              {lang.label}
-            </ListboxOption>
+                          key={lang.value}
+                          value={lang}
+                          disabled={!lang.isactive}
+                          className={({disabled}) => `px-4 py-2 ${disabled ? "cursor-not-allowed text-gray-400" : "cursor-pointer hover:bg-blue-100"}`}
+                        >
+                          {lang.label}
+                        </ListboxOption>
           ))}
         </ListboxOptions>
       </div>

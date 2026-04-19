@@ -28,9 +28,17 @@ export const TotalHistory = async () => {
     const res = await axios.post("http://127.0.0.1:8080/count/history");
     return res.data;
 }
-export const SubmitLabels = async (label) => {
+export const SubmitLanguageInput = async (label) => {
   const res = await axios.post(
-    "http://127.0.0.1:8080/monitoring/languages",
+    "http://127.0.0.1:8080/monitoring/languages_input",
+    { label: label }
+  );
+
+  return res.data;
+};
+export const SubmitLanguageResult = async (label) => {
+  const res = await axios.post(
+    "http://127.0.0.1:8080/monitoring/languages_result",
     { label: label }
   );
 

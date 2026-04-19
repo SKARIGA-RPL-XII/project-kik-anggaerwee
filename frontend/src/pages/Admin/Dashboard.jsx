@@ -44,9 +44,9 @@ const Dashboard = () => {
     <SidebarLayouts type="dashboard">
       <Breadcrumb type="Dashboard" />
 
-      <div className="grid grid-cols-1 md:grid-cols-12 mx-5 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 mx-5 gap-5">
         <div className="md:col-span-3">
-          <div className="bg-white rounded-md border border-slate-300">
+          <div className="bg-white rounded-md border border-slate-300 hover:border-blue-500 hover:shadow-md">
             <div className="p-2 flex justify-between items-center">
               <h1 className="font-extralight text-md">Total Users</h1>
               <Users size={20} />
@@ -55,15 +55,15 @@ const Dashboard = () => {
               <h1 className="font-medium text-4xl">{totaluser}</h1>
               <ArrowUpCircle color="" />
             </div>
-            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
             <Link to="/admin/table/user">
+            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
               Visit
-            </Link>
             </div>
+            </Link>
           </div>
         </div>
         <div className="md:col-span-3">
-          <div className="bg-linear-to-r from-white to-blue-100 rounded-md border border-slate-300">
+          <div className="bg-linear-to-r from-white to-blue-100 rounded-md border border-slate-300 hover:border-blue-500 hover:shadow-md">
             <div className="p-2 flex justify-between items-center">
               <h1 className="font-extralight text-md">Total Language</h1>
               <MessageCircle size={20} />
@@ -71,15 +71,15 @@ const Dashboard = () => {
             <div className="my-2 mx-2 flex justify-between items-center">
               <h1 className="font-medium text-4xl">{totallang}</h1>
             </div>
-            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
             <Link to="/admin/table/language">
+            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
               Visit
-            </Link>
             </div>
+            </Link>
           </div>
         </div>
         <div className="md:col-span-3">
-          <div className="bg-linear-to-r from-blue-100 to-blue-400 rounded-md border border-slate-300">
+          <div className="bg-linear-to-r from-blue-100 to-blue-400 rounded-md border border-slate-300 hover:border-blue-500 hover:shadow-md">
             <div className="p-2 flex justify-between items-center">
               <h1 className="font-extralight text-md">History Transaction</h1>
               <Globe size={20} />
@@ -87,15 +87,15 @@ const Dashboard = () => {
             <div className="my-2 mx-2 flex justify-between items-center">
               <h1 className="font-medium text-4xl">{totalhist}</h1>
             </div>
-            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
             <Link to="/admin/table/history">
+            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
               Visit
-            </Link>
             </div>
+            </Link>
           </div>
         </div>
         <div className="md:col-span-3">
-          <div className="bg-blue-400 rounded-md border border-slate-300">
+          <div className="bg-blue-400 rounded-md border border-slate-300 hover:border-blue-500 hover:shadow-md">
             <div className="p-2 flex justify-between items-center">
               <h1 className="font-extralight text-md">{usernm}</h1>
               <User size={20} />
@@ -103,30 +103,30 @@ const Dashboard = () => {
             <div className="my-2 mx-2 flex justify-between items-center">
               <h1 className="font-medium text-4xl">{role ? "Admin" : "User"}</h1>
             </div>
-            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
             <Link to="/admin/profile">
+            <div className="w-full text-center bg-transparan hover:bg-blue-50/30 py-1 cursor-pointer">
               Visit
-            </Link>
             </div>
+            </Link>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 mx-5 my-5 gap-5">
         <div className="md:col-span-9">
-          <div className="bg-linear-to-r from-blue-100 to-blue-50 rounded-md border border-slate-400 p-3">
+          <div className="bg-linear-to-r from-blue-100 to-blue-50 rounded-md border border-slate-400 p-3 hover:border-blue-500 hover:shadow-md">
             <h1 className="font-regular mb-2">Language Used in <span className="font-semibold">History Transaction</span></h1>
             <hr />
             <Languages />
           </div>
         </div>
         <div className="md:col-span-3 flex flex-col gap-3">
-            <div className="bg-linear-to-r from-blue-50 to-white rounded-md border border-slate-400 p-3">
+            <div className="bg-linear-to-r from-blue-50 to-white rounded-md border border-slate-400 p-3 hover:border-blue-500 hover:shadow-md">
                 <h1 className="font-regular mb-2">Role Users</h1>
             <hr />
                 <Roles />
             </div>
-            <div className="bg-linear-to-r from-blue-50 to-white rounded-md border border-slate-400 p-3">
+            <div className="bg-linear-to-r from-blue-50 to-white rounded-md border border-slate-400 p-3 hover:border-blue-500 hover:shadow-md">
                 <h1 className="font-regular mb-2">Language Isactive</h1>
             <hr />
                 <RolePie />

@@ -3,25 +3,30 @@ import { use, useEffect, useCallback, useState } from "react";
 import UploadLogo from '../../assets/upload-logo.png'
 import { Paperclip} from "react-feather";
 import { processUpload } from "../services/ocr.services";
-const UploadFile = ({ setText, setLoading }) => {
-  const onDrop = useCallback((acceptedFiles) => {
-    setLoading(true);
+const UploadFile = ({ setText, setLoading, setInputSelect, setOutputSelect }) => {
+  const onDrop = useCallback(async (acceptedFiles) => {
+  setLoading(true);
 
-    processUpload(acceptedFiles)
-      .then((res) => {
-        if (res) setText(res.join(" "));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const res = await processUpload(acceptedFiles);
+
+  if (res) {
+    setText(res.join(" "));
+  }
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+
+}, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
     <div
       {...getRootProps()}
       className="py-6 px-4 bg-slate-50 rounded-md border border-blue-100  shadow-md shadow-blue-100 w-full text-center cursor-pointer"
     >
-      <input {...getInputProps()} />
+      <input
+        disabled={!setInputSelect || !setOutputSelect} 
+       {...getInputProps()} />
 
       {isDragActive ? (
         <div className="flex flex-col items-center justify-center">
@@ -39,7 +44,7 @@ const UploadFile = ({ setText, setLoading }) => {
             here, or click to select file
           </p>
           <p className="text-sm text-muted text-slate-500 mb-3">
-            Supported formats: JPG, PNG, JPEG, PDF
+            Supported formats: JPG, PNG, JPEG
           </p>
           <div className="flex gap-2">
             <button className="bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 text-white cursor-pointer">

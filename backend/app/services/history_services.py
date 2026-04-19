@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 from app.models.history import History
 from datetime import datetime, timedelta
 import random
-import datetime
 
 def process_gethistory(db):
     try:

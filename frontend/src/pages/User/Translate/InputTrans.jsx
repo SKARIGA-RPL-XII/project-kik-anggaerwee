@@ -18,8 +18,13 @@ const InputTrans = (props) => {
     setInputSelect(selected);
   };
   
-
-
+  if(inputSelect === null){
+    return <div className="relative w-full">
+        <div className="w-full bg-white border rounded-md px-4 py-2 flex justify-between items-center">
+          <span>No data available in Language</span>
+        </div>
+      </div>;
+  }
   if (!inputSelect) {
   return <div>Loading...</div>;
 }
@@ -37,7 +42,8 @@ const InputTrans = (props) => {
             <ListboxOption
               key={lang.value}
               value={lang}
-              className="cursor-pointer px-4 py-2 hover:bg-blue-100"
+              disabled={!lang.isactive}
+              className={({disabled}) => `px-4 py-2 ${disabled ? "cursor-not-allowed text-gray-400" : "cursor-pointer hover:bg-blue-100"}`}
             >
               {lang.label}
             </ListboxOption>

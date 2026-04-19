@@ -22,13 +22,15 @@ async def translate_process(text: str, model: str):
 
 def getlanguages(db):
     try:
+        # languages = db.query(Language).filter(Language.isactive == "true")
         languages = db.query(Language).all()
         data = []
         for l in languages:
             data.append({
                 "id" : l.languageid,
                 "value" : l.langcode,
-                "label" : l.languagenm
+                "label" : l.languagenm,
+                "isactive": l.isactive
             })
 
         return {"status":"success","data":data}

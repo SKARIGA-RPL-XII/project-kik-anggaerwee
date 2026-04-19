@@ -96,7 +96,14 @@ const Table = ({ data, columns }) => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
+          {table.getRowModel().rows.length === 0 ? (
+            <tr>
+              <td colSpan={table.getAllColumns().length}
+                className="text-center py-6 text-gray-500">
+                  No data available in table
+              </td>
+            </tr>
+          ) : (table.getRowModel().rows.map((row) => (
             <React.Fragment key={row.id}>
               <tr className="bg-neutral-primary-soft hover:bg-neutral-secondary-medium border-b border-default">
                 {row.getVisibleCells().map((cell) => (
@@ -127,7 +134,7 @@ const Table = ({ data, columns }) => {
                 </tr>
               )}
             </React.Fragment>
-          ))}
+          )))}
         </tbody>
       </table>
 

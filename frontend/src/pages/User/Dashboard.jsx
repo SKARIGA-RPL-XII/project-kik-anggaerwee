@@ -1,4 +1,5 @@
 import { use, useEffect, useCallback, useState } from "react";
+// import { franc } from "franc";
 import NavbarLayout from "../../components/Layouts/NavbarLayouts";
 import { useLogin } from "../../components/hooks/useLogin";
 import { getRole } from "../../components/services/auth.services";
@@ -40,11 +41,20 @@ const Dashboard = () => {
     try {
       const res = await getLanguages();
       const langs = res?.data;
-
+      const detectinactive = res?.data.isactive === 'true';
+      // if(res?.data.isactive === 'true'){
+      //   console.log("true coy")
+      // }else{
+      //   console.log("false coy")
+      // }
+      // const langs = res?.data.isactive === true;
+      console.log(langs)
+      
       if (!Array.isArray(langs) || langs.length === 0) {
         console.log("Data kosong / salah format");
         return;
       }
+      // console.log(langs)
 
       setLanguages(langs);
       setInputSelect(langs[0]);
@@ -129,6 +139,8 @@ const Dashboard = () => {
   const handleSoundText = (text) => {
     const synth = window.speechSynthesis;
 
+    const voices = synth.getVoices()
+    console.log(voices)
     if (synth.speaking) {
       synth.cancel();
       setSound(false);
@@ -136,12 +148,14 @@ const Dashboard = () => {
     }
 
     if (!text) return;
+    // const lang = franch(text);
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ko-KR';
     utterance.onend = () => {
       setSound(false);
     };
     synth.speak(utterance);
-    setSound(true);
+      setSound(true);
   };
 
   const handleSave = () =>{
@@ -188,6 +202,8 @@ const handleSwap = () => {
           <UploadFile 
       setText={setText}
       setLoading={setLoading}
+      setInputSelect={setInputSelect}
+      setOutputSelect={setOutputSelect}
     />
         </div>
       </div>
@@ -222,6 +238,7 @@ const handleSwap = () => {
             <textarea
               name=""
               id=""
+              disabled={!inputSelect || !outputSelect}
               value={text}
               onChange={(e) => setText(e.target.value)}
               className="w-full border border-transparent rounded-md py-2 px-6 focus:ring-2 focus:ring-blue-500 outline-none"

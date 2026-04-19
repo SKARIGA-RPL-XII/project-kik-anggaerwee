@@ -53,9 +53,25 @@ def totalhistory(db):
     except Exception as e:
         return {"status":"error","message": str(e)}
 
-def monitor_lang(db, label):
+def monitor_lang_input(db, langcode):
     try:
-        count = db.query(func.count(History.historyid)).filter(History.language_input == label).scalar()
-        return {"status":"success","total":count}
+        count = db.query(func.count(History.historyid))\
+            .filter(History.language_input == langcode)\
+            .scalar()
+
+        return {"status": "success", "total": count}
+
     except Exception as e:
-        return {"status":"error","message": str(e)}
+        return {"status": "error", "message": str(e)}
+
+
+def monitor_lang_output(db, langcode):
+    try:
+        count = db.query(func.count(History.historyid))\
+            .filter(History.language_result == langcode)\
+            .scalar()
+
+        return {"status": "success", "total": count}
+
+    except Exception as e:
+        return {"status": "error", "message": str(e)}

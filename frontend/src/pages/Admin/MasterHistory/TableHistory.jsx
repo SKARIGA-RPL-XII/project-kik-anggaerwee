@@ -8,7 +8,7 @@ import "../../../components/Elements/Modal/index";
 import Modal from "../../../components/Elements/Modal";
 import FormLang from "./FormHistory";
 import { jwtDecode } from "jwt-decode";
-import { Info, Edit, Trash, PlusCircle, Printer } from "react-feather";
+import { Info, Edit, Trash, PlusCircle, Printer, Download } from "react-feather";
 import jsPDF from "jspdf";
 import 'jspdf-autotable'
 import DropdownUsers from "./DropdownUsers";
@@ -227,15 +227,15 @@ const TableLang = () => {
             <div className="flex justify-between">
               <h1 className="font-semibold text-xl">Data History</h1>
 
-              <div className="flex gap-3">
+              <div className="column md:flex gap-3">
                 <DropdownUsers onChange={(id) => setSelectedUserId(id)} />
 
                 <button
                   type="button"
                   onClick={generatePDF}
-                  className="px-3 py-1.5 text-white bg-green-500 hover:bg-green-600 rounded-md flex gap-2 cursor-pointer"
+                  className="px-3 py-2 align-items-center text-white bg-green-500 hover:bg-green-600 rounded-md flex gap-2 cursor-pointer"
                 >
-                  Download PDF
+                  <Download size={20} /> Download PDF
                 </button>
               </div>
             </div>

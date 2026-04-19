@@ -1,3 +1,4 @@
+import { useEffect }from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/trinslitin-logo.png";
 import Vector from "../../assets/vector.png";
@@ -20,22 +21,40 @@ const SidebarLayouts = (props) => {
   const { children, type } = props;
   const token = localStorage.getItem("token");
   useLogin();
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(() => {
+    const saved = localStorage.getItem("sidebar");
+    return saved !== null ? JSON.parse(saved) : true;
+  });
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem("sidebar", JSON.stringify(isExpanded));
+  }, [isExpanded])
 
   const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded(prev => !prev);
   };
+
   return (
     <div className="min-h-screen flex">
       <aside 
-        className={`fixed top-0 left-0 z-40 h-screen bg-linear-to-t from-sky-50 to-blue-50 px-4 py-3 shadow-md border-e border-slate-300 overflow-y-auto transition-all duration-300 
-          ${isExpanded ? 'w-64' : 'w-20'}`}
+        className={`fixed top-0 left-0 z-40 h-screen bg-linear-to-t from-sky-50 to-blue-50 px-4 py-3 shadow-md border-e border-slate-300 overflow-y-auto transition-all duration-300
+          ${isExpanded ? 'w-64' : 'w-20'}
+          ${isExpanded ? 'translate-x-0' : '-translate-x-full'} 
+    md:translate-x-0`}
       >
         <div className={`flex items-center gap-2 pb-3 mb-5 border-b border-blue-600 ${!isExpanded && 'justify-center'}`}>
           <img src={Logo} alt="Logo" className="w-10 h-10 min-w-[40px]" />
           {isExpanded && <span className="text-blue-500 font-bold text-xl truncate">Trinslitin.</span>}
+          <button 
+            onClick={toggleSidebar}
+            className="p-2 block md:hidden rounded-full border bg-white border-blue-400 text-blue-400 hover:bg-blue-50 transition shadow-sm cursor-pointer"
+          >
+            {isExpanded ? <ChevronsLeft size={20} /> : <ChevronsRight size={20} />}
+          </button>
         </div>
 
+        
         <nav>
           <ul className="space-y-2">
             {[
@@ -77,12 +96,12 @@ const SidebarLayouts = (props) => {
       </aside>
 
       <main 
-        className={`min-h-screen w-full transition-all duration-300 ${isExpanded ? 'md:ml-64' : 'ml-20'}`}
+        className={`min-h-screen w-full transition-all duration-300 ${isExpanded ? 'md:ml-64' : 'md:ml-20'}`}
       >
         <div className="sticky top-0 bg-blue-100 p-2 z-30 flex items-center">
           <button 
             onClick={toggleSidebar}
-            className="p-2 rounded-full border bg-white border-blue-400 text-blue-400 hover:bg-blue-50 transition shadow-sm cursor-pointer"
+            className="p-2 -left-20 rounded-full border bg-white border-blue-400 text-blue-400 hover:bg-blue-50 transition shadow-sm cursor-pointer"
           >
             {isExpanded ? <ChevronsLeft size={20} /> : <ChevronsRight size={20} />}
           </button>

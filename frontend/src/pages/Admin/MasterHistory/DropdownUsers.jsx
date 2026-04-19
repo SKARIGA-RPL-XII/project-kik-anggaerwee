@@ -17,7 +17,7 @@ export default function DropdownUsers({ onChange }) {
   }, []);
 
   return (
-    <form className="w-32">
+    <form className="w-40 mb-2 md:mb-0">
       <label className="sr-only">Select an option</label>
 
       <select

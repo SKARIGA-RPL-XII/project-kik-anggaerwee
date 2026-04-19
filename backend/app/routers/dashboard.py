@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Request, UploadFile, File
 from pydantic import BaseModel
-from app.services.dashboard_services import totalusers, totalroleuser, totalroleadmin, totallanguages, totallangactive, totallanginactive, totalhistory, monitor_lang
+from app.services.dashboard_services import totalusers, totalroleuser, totalroleadmin, totallanguages, totallangactive, totallanginactive, totalhistory, monitor_lang_output, monitor_lang_input
 from app.database.dbconfig import get_db
 from sqlalchemy.orm import Session
 
@@ -37,9 +37,40 @@ def countlanginactive(db: Session = Depends(get_db)):
 def counthistory(db: Session = Depends(get_db)):
     return totalhistory(db)
 
-@router.post('/monitoring/languages')
-def counthistory(
+@router.post('/monitoring/languages_input')
+def countlanguageinput(
     request: LabelRequest,
     db: Session = Depends(get_db)
     ):
-    return monitor_lang(db, request.label)
+    return monitor_lang_input(db, request.label)
+
+@router.post('/monitoring/languages_result')
+def countlanguageoutput(
+    request: LabelRequest,
+    db: Session = Depends(get_db)
+    ):
+    return monitor_lang_output(db, request.label)
+
+from sqlalchemy import func
+
+@router.get('/monitoring/language-summary')
+def language_summary(db: Session = Depends(get_db)):
+    try:
+        input_counts = db.query(
+            History.language_input,
+            func.count(History.historyid)
+        ).group_by(History.language_input).all()
+
+        result_counts = db.query(
+            History.language_result,
+            func.count(History.historyid)
+        ).group_by(History.language_result).all()
+
+        return {
+            "status": "success",
+            "input": dict(input_counts),
+            "result": dict(result_counts)
+        }
+
+    except Exception as e:
+        return {"status": "error", "message": str(e)}

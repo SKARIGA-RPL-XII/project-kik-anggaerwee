@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Modal = ({ closeModal, title, children }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="bg-white w-full max-w-2xl rounded-lg p-6 shadow-lg">
+      <div className="bg-white w-full max-w-2xl rounded-lg p-6 mx-3 shadow-lg">
         
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-4">
